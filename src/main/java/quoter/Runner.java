@@ -5,9 +5,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import quoter.interfaces.IQuoter;
 
 public class Runner {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ApplicationContext context = new ClassPathXmlApplicationContext("/context.xml");
-        IQuoter quoter = (IQuoter)context.getBean("terminatorQuoter");
-        quoter.say();
+        while (true) {
+            ((IQuoter)context.getBean("terminatorQuoter")).say();
+            Thread.sleep(500);
+        }
     }
 }

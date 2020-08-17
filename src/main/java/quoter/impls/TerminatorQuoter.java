@@ -1,8 +1,10 @@
 package quoter.impls;
 
 import quoter.annotations.InjectRandom;
+import quoter.annotations.Profiling;
 import quoter.interfaces.IQuoter;
 
+@Profiling
 public class TerminatorQuoter implements IQuoter {
     private String message;
     @InjectRandom(min = 2, max = 10)

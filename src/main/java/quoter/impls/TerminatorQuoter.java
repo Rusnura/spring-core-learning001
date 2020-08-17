@@ -8,6 +8,20 @@ public class TerminatorQuoter implements IQuoter {
     @InjectRandom(min = 2, max = 10)
     private int repeatsCount;
 
+    public TerminatorQuoter() {
+        System.out.println("=== Phase 1 constructor ===");
+        System.out.println("This constructor called by spring's reflection before BeanPostProcessing..." + System.lineSeparator() +
+            "repeatsCount property value at current moment = 0");
+    }
+
+    // We can call this constructor via @PostConstruct, but we need declare in context.xml:
+    // <context:annotation-config />
+    // This line adding all annotations (ex: @PostConstruct, @Autowired and etc) to current application
+    public void init() {
+        System.out.println("=== Phase 2 constructor ===");
+        System.out.println("I'am TerminatorQuoter, i will do repeat my message: " + repeatsCount + " times!");
+    }
+
     @Override
     public void say() {
         if (message != null && !message.isEmpty()) {

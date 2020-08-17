@@ -1,0 +1,15 @@
+plugins {
+    id 'java'
+}
+
+group 'com.tumasov.spring'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile("org.springframework:spring-context:4.1.6.RELEASE")
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}

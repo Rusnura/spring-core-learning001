@@ -1,6 +1,7 @@
 package quoter.impls;
 
 import quoter.annotations.InjectRandom;
+import quoter.annotations.PostProxy;
 import quoter.annotations.Profiling;
 import quoter.interfaces.IQuoter;
 
@@ -22,6 +23,12 @@ public class TerminatorQuoter implements IQuoter {
     public void init() {
         System.out.println("=== Phase 2 constructor ===");
         System.out.println("I'am TerminatorQuoter, i will do repeat my message: " + repeatsCount + " times!");
+    }
+
+    @PostProxy
+    public void postProxyInit() {
+        System.out.println("=== Phase 3 constructor ===");
+        say();
     }
 
     @Override
